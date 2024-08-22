@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>pCode Groundworks</title>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<!-- <style>body{opacity: 0;}</style> -->
+	<link rel="stylesheet" href="css/style.min.css?_v=20240822124014">
+	<link rel="shortcut icon" href="favicon.ico">
+	<!-- <meta name="robots" content="noindex, nofollow"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header id="header" class="header">
+			<div class="header__container">
+				<a href="#" class="header__logo">
+					<img src="img/logo.png" alt="Logo"></a>
+				<div class="header__menu menu">
+					<ul class="menu__list">
+						<li class="menu__item">
+							<a href="#" class="menu__link">Services</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<main class="page">
+			<section class="page__hero hero">
+				<div class="hero__container">
+					<div class="hero__content content-hero">
+						<h1 class="content-hero__title">Ready components for the Front End Developers</h1>
+						<div class="content-hero__text">
+							<p>This is a collection of ready-made solutions for developers. It contains code with components, basic and full styles, and <a target="_blank" href="https://code.visualstudio.com/">vs-code</a> snippets. Copy the necessary code from this resource!</p>
+						</div>
+					</div>
+					<div class="hero__images images-hero">
+						<img src="img/hero/01.jpeg" alt="">
+					</div>
+				</div>
+			</section>
+			<section class="page__components components">
+				<div class="components__container">
+					<div class="components__header-block header-block">
+						<div class="header-block__label">code / style / snippets</div>
+						<h2 class="header-block__title">Components</h2>
+					</div>
+					<div class="components__items">
+						<article class="components__item">
+							<div class="components__content">
+								<div class="components__body">
+									<div class="components__header">
+										<div class="components__title"><span>Slix</span> slider</div>
+										<div class="components__version">version 1.0.3</div>
+										<img src="img/components/slix.png" class="components__image" alt="Slix">
+									</div>
+									<div class="components__desc desc">
+										<h2 class="desc__title">The multi-functional slider includes styles and a snippet.</h2>
+										<p class="desc__structure">Structure:</p>
+										<p class="desc__text">js -> slix.js + modules (slix-counter.js, slix-navigation.js slix-pagination.js)</p>
+										<p class="desc__text">css -> slix-style.css + slix-style-full.css</p>
+										<p class="desc__text">snippets code add to your vs-code</p>
+									</div>
+									<div data-spollers class="spollers">
+										<details class="spollers__item">
+											<summary class="spollers__title">Get code</summary>
+											<div class="spollers__body">
+												JS Core
+												<div class="body__inner">
+													<p>
+														// slix-pagination.js<br>
+														export const initPagination = (slides, slidesField, width, moveSlide) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const paginationContainer = document.querySelector('.slix-pagination');<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (!paginationContainer) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error('Pagination container not found');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;slides.forEach((_, index) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const dot = document.createElement('div');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.classList.add('dot');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (index === 0) dot.classList.add('active');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.dataset.index = index;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paginationContainer.appendChild(dot);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const dots = paginationContainer.querySelectorAll('.dot');<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const updatePagination = (slideIndex) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dots.forEach(dot =&gt; dot.classList.remove('active'));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dots[slideIndex - 1].classList.add('active');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;dots.forEach(dot =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.addEventListener('click', (e) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const index = parseInt(e.target.dataset.index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveToSlide(index + 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.addEventListener('touchstart', (e) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const index = parseInt(e.target.dataset.index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveToSlide(index + 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const moveToSlide = (index) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const offset = width * (index - 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transform = `translateX(-${offset}px)`;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveSlide(index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updatePagination(index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;return updatePagination;<br>
+														};<br>
+													</p>
+
+													<p>
+														/* <br>
+														&nbsp;&nbsp;&nbsp;&nbsp;Slix slider 1.0.1<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;Snippet (HTML): slix, slixfull<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;Author: Mykola Papchenko<br>
+														*/<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;// basic style<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;import "../scss/slix-style.scss";<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;// full style (Navigation, Pagination, Counter)<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;// import "../scss/slix-style-full.scss";<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;// connect the function (Navigation, Pagination, Counter)<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;// import { initNavigation } from './modules/slix-navigation.js';<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;// import { initCounter } from './modules/slix-counter.js';<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;// import { initPagination } from './modules/slix-pagination.js';<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const slidesWrapper = document.querySelector('.slix__slider-wrapper');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const slidesField = document.querySelector('.slix__slider-inner');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const width = parseInt(window.getComputedStyle(slidesWrapper) <br> .width);<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;let slideIndex = 1;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;let offset = 0;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;let isDragging = false, startPos = 0, currentTranslate = 0, prevTranslate = 0;<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const slides = document.querySelectorAll('.slix__slide');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.width = `${100 * slides.length}%`;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;slides.forEach(slide =&gt; slide.style.width = `${width}px`);<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const moveSlide = (direction) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (typeof direction === 'number') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slideIndex = direction;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset = width * (slideIndex - 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (direction === 'next') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset = (offset === width * (slides.length - 1)) ? 0 : offset + width;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slideIndex = (slideIndex === slides.length) ? 1 : slideIndex + 1;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;offset = (offset === 0) ? width * (slides.length - 1) : offset - width;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slideIndex = (slideIndex === 1) ? slides.length : slideIndex - 1;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transform = `translateX(-${offset}px)`;<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (typeof updateSlideCount === 'function') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateSlideCount(slideIndex);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;if (typeof updatePagination === 'function') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updatePagination(slideIndex);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														};<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;initNavigation(slides, slidesField, width, moveSlide);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;} catch (e) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Navigation module not loaded");<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;let updateSlideCount;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateSlideCount = initCounter();<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;} catch (e) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Counter module not loaded");<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;let updatePagination;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;try {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updatePagination = initPagination(slides, slidesField, width, moveSlide);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;} catch (e) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.log("Pagination module not loaded");<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const startDrag = (pos) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isDragging = true;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startPos = pos;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transition = 'none';<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const endDrag = () =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isDragging = false;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const movedBy = currentTranslate - prevTranslate;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (movedBy &lt; -width / 4) moveSlide('next');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (movedBy &gt; width / 4) moveSlide('prev');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setPositionByIndex();<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const dragMove = (pos) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (isDragging) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;currentTranslate = prevTranslate + pos - startPos;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transform = `translateX(${currentTranslate}px)`;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const setPositionByIndex = () =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prevTranslate = -offset;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transition = '0.5s all';<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transform = `translateX(-${offset}px)`;<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (typeof updateSlideCount === 'function') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updateSlideCount(slideIndex);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (typeof updatePagination === 'function') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updatePagination(slideIndex);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;slides.forEach((slide, index) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const img = slide.querySelector('img');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('mousedown', (e) =&gt; startDrag(e.clientX));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('mousemove', (e) =&gt; dragMove(e.clientX));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('mouseup', endDrag);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('mouseleave', () =&gt; isDragging &amp;&amp; endDrag());<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('touchstart', (e) =&gt; startDrag(e.touches[0].clientX));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('touchmove', (e) =&gt; dragMove(e.touches[0].clientX));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('touchend', endDrag);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;img.addEventListener('dragstart', (e) =&gt; e.preventDefault());<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+													</p>
+												</div>
+												JS Functionals (counter, navigation, pagination)
+												<div class="body__inner">
+													<p>
+														// slix-counter.js<br>
+														const formatNumber = num =&gt; num &lt; 10 ? `0${num}` : num;<br>
+														const total = document.querySelector('#total');<br>
+														const current = document.querySelector('#current');<br>
+														const slides = document.querySelectorAll('.slix__slide');<br><br>
+
+														export const initCounter = () =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const updateSlideCount = (slideIndex) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;total.textContent = formatNumber(slides.length);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current.textContent = formatNumber(slideIndex);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;updateSlideCount(1);<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;return updateSlideCount;<br>
+														};<br>
+													</p>
+													<p>
+														// slix-navigation.js<br>
+														export function initNavigation(slides, slidesField, width, moveSlide) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const prev = document.querySelector('.slides-prev');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const next = document.querySelector('.slides-next');<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;let slideIndex = 1;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;let offset = 0;<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const prevSlide = () =&gt; moveSlide('prev');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const nextSlide = () =&gt; moveSlide('next');<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (prev) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev.addEventListener('click', prevSlide);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error("Previous button not found");<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (next) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next.addEventListener('click', nextSlide);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error("Next button not found");<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;return {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getSlideIndex: () =&gt; slideIndex,<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getOffset: () =&gt; offset<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+														}<br>
+													</p>
+													<p>
+														// slix-pagination.js<br>
+														export const initPagination = (slides, slidesField, width, moveSlide) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const paginationContainer = document.querySelector('.slix-pagination');<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (!paginationContainer) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console.error('Pagination container not found');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;slides.forEach((_, index) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const dot = document.createElement('div');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.classList.add('dot');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (index === 0) dot.classList.add('active');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.dataset.index = index;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;paginationContainer.appendChild(dot);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const dots = paginationContainer.querySelectorAll('.dot');<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const updatePagination = (slideIndex) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dots.forEach(dot =&gt; dot.classList.remove('active'));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dots[slideIndex - 1].classList.add('active');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;dots.forEach(dot =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.addEventListener('click', (e) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const index = parseInt(e.target.dataset.index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveToSlide(index + 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot.addEventListener('touchstart', (e) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const index = parseInt(e.target.dataset.index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveToSlide(index + 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;const moveToSlide = (index) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const offset = width * (index - 1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slidesField.style.transform = `translateX(-${offset}px)`;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;moveSlide(index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;updatePagination(index);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;return updatePagination;<br>
+														};<br>
+													</p>
+
+												</div>
+												CSS Basic
+												<div class="body__inner">
+													<p>
+														.slix {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;max-width: 800px; // change the width for your project<br>
+														}<br><br>
+
+														.slix__slide {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 400px; // change the height for your project<br>
+														}<br><br>
+
+														.slix__slide img {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 100%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;object-fit: cover;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;cursor: grab;<br>
+														}<br><br>
+
+														.slix__slider-wrapper {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;<br>
+														}<br><br>
+
+														.slix__slider-inner {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transition: 0.5s all; // set glide speed<br>
+														}<br>
+													</p>
+												</div>
+												CSS Full
+												<div class="body__inner">
+													<p>
+														.slix {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;max-width: 800px; // change the width for your project<br>
+														}<br><br>
+
+														.slix__slide {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 400px; // change the height for your project<br>
+														}<br><br>
+
+														.slix__slide img {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 100%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;object-fit: cover;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;cursor: grab;<br>
+														}<br><br>
+
+														.slix__slider-wrapper {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;overflow: hidden;<br>
+														}<br><br>
+
+														.slix__slider-inner {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transition: 0.5s all; // set glide speed<br>
+														}<br><br>
+
+														.slides-prev, .slides-next {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 54px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 54px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border: none;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;background-color: #f0f0f0;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;position: relative;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;font-size: 0;<br>
+														}<br><br>
+
+														.slides-prev::before, .slides-next::before {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;content: '';<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: inline-block;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 14px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 14px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border-top: 5px solid #333;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border-right: 5px solid #333;<br>
+														}<br><br>
+
+														.slides-prev::before {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;left: 21px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transform: rotate(-135deg);<br>
+														}<br><br>
+
+														.slides-next::before {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;right: 21px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transform: rotate(45deg);<br>
+														}<br><br>
+
+														.slix-navigations {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;justify-content: space-around;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;padding: 10px;<br>
+														}<br><br>
+
+														.slix-counter {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;color: #fff;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;font-size: 24px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;gap: 10px;<br>
+														}<br><br>
+
+														.slix-pagination {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;position: absolute;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;bottom: 10px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;left: 50%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transform: translateX(-50%);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;gap: 10px;<br>
+														}<br><br>
+
+														.dot {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;width: 16px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;height: 16px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;background-color: gray;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 50%;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+														}<br><br>
+
+														.dot.active {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;background-color: white;<br>
+														}<br>
+													</p>
+												</div>
+												Snippet
+												<div class="body__inner">
+													<p>
+														"Slix": {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"scope": "html",<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"prefix": "slix",<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"body": [<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lt;div class=&quot;${1:block-name}__slider slix&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__wrapper slix__slider-wrapper&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__inner slix__slider-inner&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__slide slix__slider-slide&quot;&gt;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;"<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"description": "Add basic HTML-code of slider Slix"<br>
+														},<br>
+														"Slix Full": {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"scope": "html",<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"prefix": "slixfull",<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"body": [<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lt;div class=&quot;${1:block-name}__slider slix&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;slix-counter&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span id=&quot;current&quot;&gt;00&lt;/span&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;span id=&quot;total&quot;&gt;00&lt;/span&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__wrapper slix__slider-wrapper&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__inner slix__slider-inner&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__slide slix__slider-slide&quot;&gt;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;slix-pagination&quot;&gt;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;slix-navigations&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type=&quot;button&quot; class=&quot;slides-prev&quot;&gt;&lt;/button&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button type=&quot;button&quot; class=&quot;slides-next&quot;&gt;&lt;/button&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;"<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"description": "Add full HTML-code of slider Slix"<br>
+														},<br>
+													</p>
+												</div>
+											</div>
+										</details>
+									</div>
+								</div>
+							</div>
+						</article>
+						<article class="components__item">
+							<div class="components__content">
+								<div class="components__body">
+									<div class="components__header">
+										<div class="components__title"><span>inSort</span> sorter</div>
+										<div class="components__version">version 1.0.2</div>
+										<img src="img/components/insort.png" class="components__image components__image--rotate" alt="inSort">
+									</div>
+									<div class="components__desc desc">
+										<h2 class="desc__title">The multi-functional sorter includes styles and a snippet.</h2>
+										<p class="desc__structure">Structure:</p>
+										<p class="desc__text">js -> insort.js + modules (insort.active.js)</p>
+										<p class="desc__text">css -> insort-style.css + insort-style-full.css</p>
+										<p class="desc__text">snippets code add to your vs-code</p>
+									</div>
+									<div data-spollers class="spollers">
+										<details class="spollers__item">
+											<summary class="spollers__title">Get code</summary>
+											<div class="spollers__body">
+												JS Core
+												<div class="body__inner">
+													<p>
+														/*<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;inSort 1.0.1<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;Snippet (HTML): insort<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;Author: Mykola Papchenko<br>
+														*/<br><br>
+
+														// basic style<br>
+														import "../scss/insort-style.scss";<br>
+														// full style <br>
+														// import "../scss/insort-style-full.scss";<br><br>
+
+														// connect the function (active)<br>
+														// import "./modules/insort-active.js"<br><br>
+
+														const buttonAll = document.querySelector('.all'),<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;buttonEmpty = document.querySelector('.empty-button'),<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;buttonYourName = document.querySelector('.yourname'), // add as much as you need to the project and rename it as needed.<br><br>
+
+														const insortWrapper = document.querySelector('.insort-wrapper'),<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;markAll = insortWrapper.querySelectorAll('.all'),<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;markEmpty = document.querySelector('.empty'),<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;markYourName = insortWrapper.querySelectorAll('.yourname'); // add as much as you need to the project and rename it as needed<br><br>
+
+														const typeFilter = (markType) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;markAll.forEach(mark =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mark.style.display = 'none';<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;markEmpty.style.display = 'none';<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (markType) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;markType.forEach(mark =&gt; {mark.style.display = 'block'<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;});<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;markEmpty.style.display = 'block'<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+														};<br><br>
+
+														buttonAll.addEventListener('click', () =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;typeFilter(markAll);<br>
+														});<br><br>
+
+														buttonEmpty.addEventListener('click', () =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;typeFilter();<br>
+														});<br><br>
+
+														// add buttons with corresponding blocks here<br>
+														buttonYourName.addEventListener('click', () =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;typeFilter(markYourName);<br>
+														});<br>
+													</p>
+												</div>
+												JS Functionals (active)
+												<div class="body__inner">
+													<p>
+														/* insort-active v 1.0 */<br>
+														export const insortMenu = document.querySelector('.insort-menu').addEventListener('click', (e) =&gt; {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;const items = document.querySelectorAll('li');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;let target = e.target;<br><br>
+
+														&nbsp;&nbsp;&nbsp;&nbsp;if (target && target.tagName == 'LI') {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;items.forEach(btn =&gt; btn.classList.remove('active'));<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target.classList.add('active');<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														});<br>
+													</p>
+												</div>
+												CSS basic
+												<div class="body__inner">
+													<p>
+														.insort-menu {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;list-style: none;<br>
+														}<br><br>
+
+														.active {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;color: #ffff00;<br>
+														}<br><br>
+
+														.empty {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+														}
+													</p>
+												</div>
+												CSS Full
+												<div class="body__inner">
+													<p>
+														.insort-menu {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;list-style-type: none;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;padding: 0;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;gap: 16px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&amp;:not(:last-child) {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;padding-bottom: 20px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+														}<br><br>
+
+														.button-menu {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;padding: 10px 20px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;background-color: #4a4e69;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border: 1px solid #ccc;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;cursor: pointer;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transition: transform 0.3s ease, background-color 0.3s ease;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 8px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;min-width: 50px;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+														}<br><br>
+
+														.button-menu:active {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;transform: scale(1.1);<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;background-color: #5d627e;<br>
+														}<br><br>
+
+														.active {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;color: #ffff00;<br>
+														}<br><br>
+
+														.empty {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: none;<br>
+														}<br><br>
+
+														.insort-wrapper {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;gap: 30px;<br>
+														}
+													</p>
+												</div>
+												Snippet
+												<div class="body__inner">
+													<p>
+													<p>
+														"insort": {<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"scope": "html",<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"prefix": "insort",<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"body": [<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"&lt;div class=&quot;${1:block-name}__sort insort&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class=&quot;${1:block-name}__menu insort-menu&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li class=&quot;button-menu all active&quot;&gt;All&lt;/li&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li id=&quot;button-menu yourname&quot;&gt;yourname&lt;/li&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li id=&quot;button-menu empty-button&quot;&gt;empty&lt;/li&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;${1:block-name}__wrapper insort-wrapper&quot;&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;insort-block all&quot;&gt;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;insort-block all yourname&quot;&gt;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class=&quot;empty&quot;&gt;&lt;/div&gt;<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;"<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;],<br>
+														&nbsp;&nbsp;&nbsp;&nbsp;"description": "Add HTML-code of inSort"<br>
+														},<br>
+													</p>
+													</p>
+												</div>
+											</div>
+										</details>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+			<section class="page__products products">
+				<div class="products__container">
+					<div class="products__header-block header-block">
+						<div class="header-block__label">Our</div>
+						<h2 class="header-block__title">Products</h2>
+					</div>
+					<div class="products__items">
+						<div class="products__item">
+							<a target="_blank" href="http://letsfind.fun" class="item__image">
+								<img src="img/products/01.png" alt="">
+							</a>
+							<a target="_blank" href="http://letsfind.fun" class="item__title">LetsFind.fun</a>
+							<div class="item__text">
+								<p>Ready to find secret locations in limited time!? It looks like it's going to be a great adventure!</p>
+								<p>Read the rules before starting the game! and watch the video tutorial. After pressing I am ready!, you will have 45 minutes to find the first secret location!</p>
+							</div>
+						</div>
+						<div class="products__item">
+							<a target="_blank" href="http://recrun.pro" class="item__image">
+								<img src="img/products/02.png" alt="">
+							</a>
+							<a target="_blank" href="http://recrun.pro/" class="item__title">RecRun.pro</a>
+							<div class="item__text">
+								<p>This web resource is designed to record your running, swimming or cycling achievements. Take photos of the area or the race route, share your impressions with friends!</p>
+							</div>
+						</div>
+						<div class="products__item">
+							<a target="_blank" href="http://10page.online" class="item__image">
+								<img src="img/products/03.png" alt="">
+							</a>
+							<a target="_blank" href="http://10page.online/" class="item__title">10Page.online</a>
+							<div class="item__text">
+								<p>The screen-by-screen web resource is built on a full-page basis.</p>
+								<p>In this app I only use slide based pages with navigation buttons. Swipe to the side to see photos from the current album swipe down or up to view another album</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__content"></div>
+				<div class="footer__copy">2024 create by | <a target="_blank" href="http://papchenko.com"><span>papchenko.com</span></a></div>
+			</div>
+		</footer>
+	</div>
+	<script src="js/app.min.js?_v=20240822124014"></script>
+</body>
+
+</html>
